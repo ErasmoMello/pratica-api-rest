@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "9208070d-da30-4b47-be2e-f1d75f571d25",
+		"name": "Pratica - API REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31063473"
+	},
+	"item": [
+		{
+			"name": "cadastrarTarefas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tarefa\" : \"Integração API\",\r\n    \"responsavel\" : \"Erasmo RU:4525903\",\r\n    \"dataEntrega\" : \"14/04/2026\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tarefas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tarefas"
+					]
+				},
+				"description": "### Cadastrar Tarefa\n\nEsse endpoint permite que você cadastre novas tarefas utilizando o método PUT.\n\n#### Corpo da Requisição\n\n- tarefa (string, required): A descrição da tarefa.\n    \n- responsavel (string, required): A pessoa responsável pela tarefa.\n    \n- dataEntrega (string, required): A data de entrega da tarefa no formto \"DD/MM/YYYY\".\n    \n\n#### Response\n\n- Status: 200\n- Content-Type: application/json\n    \n\nApós a execução com sucesso do comando, a resposta vai incluir um código ID referente a nova tarefa adicionada, junto da descrição, da pessoa responsável e da data de entrega."
+			},
+			"response": []
+		},
+		{
+			"name": "listarTarefas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tarefas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tarefas"
+					]
+				},
+				"description": "Esse endpoint retorna a lista de tarefas.\n\n### Requisição\n\n`GET /tarefas`\n\n### Resposta/Retorno\n\nApós requisição com sucesso, o servidor vai responder com o código de estatus 200 e o array JSON contendo as tarefas como objetos. Cada tarefa inclui as seguites propriedades:\n\n- `id` (number): O identificador único da tarefa.\n- `tarefa` (string): A descrição da tarefa.\n- `responsavel` (string): A pessoa responsável pela tarefa.\n- `dataEntrega` (string): A data de entrega da tarefa.\n    \n\nExemplo do corpo de resposta:\n\n``` json\n[\n    {\n        \"id\": 0,\n        \"tarefa\": \"\",\n        \"responsavel\": \"\",\n        \"dataEntrega\": \"\"\n    }\n]\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "atualizarTarefas",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 1,\r\n        \"tarefa\": \"Desenvolvimento da API\",\r\n        \"responsavel\": \"Erasmo Mello RU:4525903\",\r\n        \"dataEntrega\": \"12/12/2025\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tarefas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tarefas",
+						"1"
+					]
+				},
+				"description": "#### Atualizar Tarefa\n\nEsse endpoint permite o usuário a atualizar a tarefa específica enviando uma requisição HTTP PUT.\n\n#### Corpo da Requisição\n\n- `id` (number) - O identificador único da tarefa.\n- `tarefa` (string) - A descrição da tarefa.\n- `responsavel` (string) - O responsável pela tarefa.\n    \n- `dataEntrega` (string) - A data de entrega da tarefa no formato \"DD/MM/YYYY\".\n    \n\n#### Resposta/Retorno\n\nA resposta é em formato JSON com o seguinte schema:\n\n``` json\n{\n    \"id\": \"number\",\n    \"tarefa\": \"string\",\n    \"responsavel\": \"string\",\n    \"dataEntrega\": \"string\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "deletarTarefas",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tarefas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tarefas",
+						"2"
+					]
+				},
+				"description": "### Delete Task\n\nEsse endpoint é utilizado para deletar uma tarefa específica identificada pelo seu ID.\n\n#### Request Body\n\nA requisitação deve ser realizadapor meio do HTTP DELETE para a URL especificada.\n\n#### Response\n\n- Estatus: 200 OK\n    \n- Tipo do conteúdo: text/xml\n    \n- Corpo da resposta: null"
+			},
+			"response": []
+		}
+	]
+}
